@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-
 <?php
 
 /*** begin our session ***/
@@ -44,13 +42,16 @@ $_SESSION['form_token'] = $form_token;
 				<br><br>
 				<label for="username"> Username: </label>
 				<br>
-				<input type="text" id="username" name="username" value="" maxlength="50">
+				<input type="text" id="username" name="username" value="" maxlength="20">
 				<br><br>
 				<label for="password"> Password: <label>
 				<br>
-				<input type="password" id="password" name="password" value="" maxlength="40">
+				<input type="password" id="password" name="password" value="" maxlength="20">
+				<input type="hidden" name="form_token" value="<?php echo $form_token; ?>" />
 				<br><br>
-				<a id="signUp" value ="Create Account" class = "signUp">Sign Up<a/>
+				<input type="submit" value="&rarr; Signup" />
+				</fieldset>
+				<!--<a id="signUp" value ="Create Account" class = "signUp">Sign Up<a/> GINO THIS MAY NEED REPLACING-->
 			</form>
 		</div>
 	</div>
