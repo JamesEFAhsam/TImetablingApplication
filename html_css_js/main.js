@@ -134,7 +134,7 @@ function submitReq(){
 }
 
 function signUp(){
-	if(location.href.indexOf('/signup.html') !== -1){
+	if(location.href.indexOf('/signup.php') !== -1){
 		var inputs = document.querySelector('input');
 		function check(){
 			var flag = false;
