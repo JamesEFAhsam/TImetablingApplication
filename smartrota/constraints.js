@@ -68,6 +68,7 @@ function multiplyPeople(people){
 function person(name, constraints){
   this.constraints = constraints;
   this.name = name;
+  this.constraintRanking = 0;
 
   this.getConstraint = function(id){
     for (var i = 0; i < this.constraints.length; i++) {
