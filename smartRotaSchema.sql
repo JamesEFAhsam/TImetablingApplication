@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: ebarker.uk.mysql:3306
--- Generation Time: Apr 19, 2018 at 02:17 PM
+-- Generation Time: Apr 24, 2018 at 03:43 PM
 -- Server version: 10.1.30-MariaDB-1~xenial
 -- PHP Version: 5.4.45-0+deb7u13
 
@@ -19,8 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `ebarker_uk`
 --
-CREATE DATABASE `ebarker_uk` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `ebarker_uk`;
 
 -- --------------------------------------------------------
 
@@ -69,9 +67,9 @@ CREATE TABLE IF NOT EXISTS `employee` (
   `employee_id` int(11) NOT NULL AUTO_INCREMENT,
   `contracted_hours` int(10) NOT NULL,
   `rank` enum('senior','junior') NOT NULL,
-  `username` varchar(50) NOT NULL,
+  `user_id` int(11) NOT NULL,
   PRIMARY KEY (`employee_id`),
-  KEY `username` (`username`)
+  KEY `user_id` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -139,18 +137,31 @@ CREATE TABLE IF NOT EXISTS `shift_cover_request` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Table structure for table `users`
 --
 
-CREATE TABLE IF NOT EXISTS `user` (
+CREATE TABLE IF NOT EXISTS `users` (
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL,
-  `email` varchar(50) NOT NULL,
+  `password` char(40) NOT NULL,
   `first_name` varchar(50) NOT NULL,
   `last_name` varchar(50) NOT NULL,
   `is_manager` tinyint(1) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`user_id`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=34 ;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`user_id`, `username`, `password`, `first_name`, `last_name`, `is_manager`) VALUES
+(12, 'gzambelli', '91dd9eeb26bc669762ae4d697705fca3809c3713', 'Gino', 'Zambelli', 0),
+(13, 'ebarker', '55b5a0f748d3a82dce10b205ecb0a0d8916c66a1', 'Edward', 'Barker', 0),
+(14, 'fpicciuto', '1200703571cb2172cf2ad5fd60b22adc70b76517', 'Florence', 'Picciuto', 0),
+(15, 'xzhu', '7182e74557574e361e9a8db126deaae00b1753cd', 'Xixuan', 'Zhu', 0),
+(16, 'wlong', '34ffd14e0b2e3b06dcbecf832aee45fb58eadd2d', 'Whizzy', 'Long', 0),
+(17, 'jahsam', '474ba67bdb289c6263b36dfd8a7bed6c85b04943', 'James', 'Ahsam', 0);
 
 --
 -- Constraints for dumped tables
@@ -175,7 +186,7 @@ ALTER TABLE `day`
 -- Constraints for table `employee`
 --
 ALTER TABLE `employee`
-  ADD CONSTRAINT `employee_ibfk_1` FOREIGN KEY (`username`) REFERENCES `user` (`username`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `employee_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON UPDATE CASCADE;
 
 --
 -- Constraints for table `employee_preferences`
