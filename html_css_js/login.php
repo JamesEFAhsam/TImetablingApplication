@@ -14,7 +14,7 @@
 		<h1>SMARTROTA</h1>
 	</div>
 	</div>
-	<form action="" method="post">
+	<form action="login_submit.php" method="post">
 	<fieldset>
 		<div class = "tableCell2">
 			<label for="username">Username:</label> 
@@ -41,7 +41,7 @@
 			<br>
 			<form action="" >
 				<a href="signup.php" class = "signUp" >SignUp<a/>
-				<a href="managersignup.html" class = "login">Manager SignUp<a/>
+				<a href="managersignup.php" class = "login">ManagerSignUp<a/>
 			</form>
 		</div>
 	</div>
@@ -52,7 +52,6 @@
 	</div>
 	</div>
 	</div>
-	<?php include 'login_submit.php' ?>
 <script  src="main.js"></script>
 	</body>
 </html>

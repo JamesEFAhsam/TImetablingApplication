@@ -16,7 +16,7 @@
 	</div>
 		<div class = "tableCell2">
 			<h2>Sign Up</h2>
-			<form action="" method="post">
+			<form action="signup_submit.php" method="post">
 			<fieldset>	
 				<label for="first_name"> First Name: </label>
 				<br>
@@ -52,7 +52,6 @@
 	</div>
 	</div>
 	</div>
-	<?php include 'signup_submit.php' ?>
 	<script  src="main.js"></script>
 	</body>	
 </html>

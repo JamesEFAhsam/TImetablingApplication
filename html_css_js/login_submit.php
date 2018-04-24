@@ -2,12 +2,11 @@
 /*** begin our session ***/
 session_start();
 /*** check if the users is already logged in ***/
+
 if(isset( $_SESSION['user_id'] ))
 {
-    $message = 'Users is already logged in';
+    $message = 'User is already logged in';
 }
-if(isset($_POST['login1'])){
-    
 /*** check that both the username, password have been submitted ***/
 if((empty($_POST['username']) || empty($_POST['password'])))
 {
@@ -87,7 +86,7 @@ else
         /*** if we are here, something has gone wrong with the database ***/
         $message = 'We are unable to process your request. Please try again later"';
     }
-}
+    
 }
 ?>
 

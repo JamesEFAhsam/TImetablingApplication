@@ -3,50 +3,50 @@
 session_start();
     
 /*** first check that both the username, password and have been sent ***/
-if((empty( $_POST['username']) || empty($_POST['password']) || empty($_POST['first_name']) || empty($_POST['last_name'])))
+if((empty( $_POST['manager_username']) || empty($_POST['manager_password']) || empty($_POST['manager_first_name']) || empty($_POST['manager_last_name'])))
 {
     $message = 'Please enter a valid username, password, first name and last name';
 }
 /*** check the username is the correct length ***/
-elseif (strlen( $_POST['username']) > 50 || strlen( $_POST['username']) < 1)
+elseif (strlen( $_POST['manager_username']) > 50 || strlen( $_POST['manager_username']) < 1)
 {
     $message = 'Incorrect Length for Username';
 }
 /*** check the password is the correct length ***/
-elseif (strlen( $_POST['password']) > 40 || strlen( $_POST['password']) < 1)
+elseif (strlen( $_POST['manager_password']) > 40 || strlen( $_POST['manager_password']) < 1)
 {
     $message = 'Incorrect Length for Password';
 }
 /*** check the first_name is the correct length ***/
-elseif (strlen( $_POST['first_name']) > 50 || strlen( $_POST['first_name']) < 1)
+elseif (strlen( $_POST['manager_first_name']) > 50 || strlen( $_POST['manager_first_name']) < 1)
 {
     $message = 'Incorrect Length for First Name';
 }
 /*** check the last_name is the correct length ***/
-elseif (strlen( $_POST['last_name']) > 50 || strlen( $_POST['last_name']) < 1)
+elseif (strlen( $_POST['manager_last_name']) > 50 || strlen( $_POST['manager_last_name']) < 1)
 {
     $message = 'Incorrect Length for Last Name';
 }
 /*** check the username has only alpha numeric characters ***/
-elseif (ctype_alnum($_POST['username']) != true)
+elseif (ctype_alnum($_POST['manager_username']) != true)
 {
     /*** if there is no match ***/
     $message = "Username must be alpha numeric";
 }
 /*** check the password has only alpha numeric characters ***/
-elseif (ctype_alnum($_POST['password']) != true)
+elseif (ctype_alnum($_POST['manager_password']) != true)
 {
         /*** if there is no match ***/
         $message = "Password must be alpha numeric";
 }
 /*** check the first_name has only alpha numeric characters ***/
-elseif (ctype_alnum($_POST['first_name']) != true)
+elseif (ctype_alnum($_POST['manager_first_name']) != true)
 {
         /*** if there is no match ***/
         $message = "First Name must be alpha numeric";
 }
 /*** check the last_name has only alpha numeric characters ***/
-elseif (ctype_alnum($_POST['last_name']) != true)
+elseif (ctype_alnum($_POST['manager_last_name']) != true)
 {
         /*** if there is no match ***/
         $message = "Last Name must be alpha numeric";
@@ -54,12 +54,12 @@ elseif (ctype_alnum($_POST['last_name']) != true)
 else
 {
     /*** if we are here the data is valid and we can insert it into database ***/
-    $username = filter_var($_POST['username'], FILTER_SANITIZE_STRING);
-    $password = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
-	$first_name = filter_var($_POST['first_name'], FILTER_SANITIZE_STRING);
-	$last_name = filter_var($_POST['last_name'], FILTER_SANITIZE_STRING);
+    $manager_username = filter_var($_POST['manager_username'], FILTER_SANITIZE_STRING);
+    $manager_password = filter_var($_POST['manager_password'], FILTER_SANITIZE_STRING);
+	$manager_first_name = filter_var($_POST['manager_first_name'], FILTER_SANITIZE_STRING);
+	$manager_last_name = filter_var($_POST['manager_last_name'], FILTER_SANITIZE_STRING);
     /*** now we can encrypt the password ***/
-    $password = sha1( $password );
+    $manager_password = sha1( $manager_password );
     
     /*** connect to database ***/
     /*** mysql hostname ***/
@@ -77,12 +77,13 @@ else
         /*** set the error mode to excptions ***/
         $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         /*** prepare the insert ***/
-        $stmt = $dbh->prepare("INSERT INTO users (username, password, first_name, last_name ) VALUES (:username, :password, :first_name, :last_name)");
+        $stmt = $dbh->prepare("INSERT INTO users (username, password, first_name, last_name, is_manager) VALUES (:manager_username, :manager_password, :manager_first_name, :manager_last_name, 1)");
+		// $stmt = $dbh->prepare("UPDATE users SET is_manager=1 WHERE username=':manager_username'");
         /*** bind the parameters ***/
-        $stmt->bindParam(':username', $username, PDO::PARAM_STR, 50);
-        $stmt->bindParam(':password', $password, PDO::PARAM_STR, 40);
-		$stmt->bindParam(':first_name', $first_name, PDO::PARAM_STR, 50);
-		$stmt->bindParam(':last_name', $last_name, PDO::PARAM_STR, 50);
+        $stmt->bindParam(':manager_username', $manager_username, PDO::PARAM_STR, 50);
+        $stmt->bindParam(':manager_password', $manager_password, PDO::PARAM_STR, 40);
+		$stmt->bindParam(':manager_first_name', $manager_first_name, PDO::PARAM_STR, 50);
+		$stmt->bindParam(':manager_last_name', $manager_last_name, PDO::PARAM_STR, 50);
         /*** execute the prepared statement ***/
         $stmt->execute();
 		
