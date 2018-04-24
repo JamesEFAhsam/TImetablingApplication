@@ -42,24 +42,64 @@ include 'login_test.php';
 				<th> SUN </th>
 			</tr>
 			<tr>
-				<td> 9AM - 4PM </td>
-				<td> 9AM - 4PM </td>
-				<td> 9AM - 4PM </td>
-				<td> 9AM - 4PM </td>
-				<td> 9AM - 4PM </td>
-				<td> 9AM - 4PM </td>
-				<td> 9AM - 4PM </td>
-				<td> 9AM - 4PM </td>
+				<td> Florence Picciuto </td>
+				<td> </td>
+				<td> </td>
+				<td> </td>
+				<td> </td>
+				<td> </td>
+				<td> </td>
+				<td> </td>
 			</tr>
 			<tr>
-				<td> 4PM - 11PM </td>
-				<td> 4PM - 11PM </td>
-				<td> 4PM - 11PM </td>
-				<td> 4PM - 11PM </td>
-				<td> 4PM - 11PM </td>
-				<td> 4PM - 11PM </td>
-				<td> 4PM - 11PM </td>
-				<td> 4PM - 11PM </td>
+				<td> Edward Barker</td>
+				<td> </td>
+				<td> </td>
+				<td> </td>
+				<td> </td>
+				<td> </td>
+				<td> </td>
+				<td> </td>
+			</tr>
+			<tr>
+				<td> Gino Zambelli</td>
+				<td> </td>
+				<td> </td>
+				<td> </td>
+				<td> </td>
+				<td> </td>
+				<td> </td>
+				<td> </td>
+			</tr>
+			<tr>
+				<td> Xixuan Zhu</td>
+				<td> </td>
+				<td> </td>
+				<td> </td>
+				<td> </td>
+				<td> </td>
+				<td> </td>
+				<td> </td>
+			</tr>
+			<tr>
+				<td> Whizzy Long </td>
+				<td> </td>
+				<td> </td>
+				<td> </td>
+				<td> </td>
+				<td> </td>
+				<td> </td>
+				<td> </td>
+			</tr>
+			<tr>
+				<td> James Ahsam </td>
+				<td> </td>
+				<td> </td>
+				<td> </td>
+				<td> </td>
+				<td> </td>
+				<td> </td>
+				<td> </td>
 			</tr>
 			</table>
 		</div>

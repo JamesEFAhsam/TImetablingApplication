@@ -1,17 +1,12 @@
 <?php
 /*** begin our session ***/
 session_start();
-/*** check if the users is already logged in ***/
-if(isset( $_SESSION['user_id'] ))
-{
-    $message = 'Users is already logged in';
-}
-if(isset($_POST['login1'])){
+if(isset($_POST['submit1'])){
     
-/*** check that both the username, password have been submitted ***/
-if((empty($_POST['username']) || empty($_POST['password'])))
+/*** first check that both the username, password and have been sent ***/
+if((empty( $_POST['username']) || empty($_POST['password']) || empty($_POST['first_name']) || empty($_POST['last_name'])))
 {
-    $message = 'Please enter a valid username and password';
+    $message = 'Please enter a valid username, password, first name and last name';
 }
 /*** check the username is the correct length ***/
 elseif (strlen( $_POST['username']) > 50 || strlen( $_POST['username']) < 1)
@@ -22,6 +17,16 @@ elseif (strlen( $_POST['username']) > 50 || strlen( $_POST['username']) < 1)
 elseif (strlen( $_POST['password']) > 40 || strlen( $_POST['password']) < 1)
 {
     $message = 'Incorrect Length for Password';
+}
+/*** check the first_name is the correct length ***/
+elseif (strlen( $_POST['first_name']) > 50 || strlen( $_POST['first_name']) < 1)
+{
+    $message = 'Incorrect Length for First Name';
+}
+/*** check the last_name is the correct length ***/
+elseif (strlen( $_POST['last_name']) > 50 || strlen( $_POST['last_name']) < 1)
+{
+    $message = 'Incorrect Length for Last Name';
 }
 /*** check the username has only alpha numeric characters ***/
 elseif (ctype_alnum($_POST['username']) != true)
@@ -35,11 +40,25 @@ elseif (ctype_alnum($_POST['password']) != true)
         /*** if there is no match ***/
         $message = "Password must be alpha numeric";
 }
+/*** check the first_name has only alpha numeric characters ***/
+elseif (ctype_alnum($_POST['first_name']) != true)
+{
+        /*** if there is no match ***/
+        $message = "First Name must be alpha numeric";
+}
+/*** check the last_name has only alpha numeric characters ***/
+elseif (ctype_alnum($_POST['last_name']) != true)
+{
+        /*** if there is no match ***/
+        $message = "Last Name must be alpha numeric";
+}
 else
 {
     /*** if we are here the data is valid and we can insert it into database ***/
     $username = filter_var($_POST['username'], FILTER_SANITIZE_STRING);
     $password = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
+	$first_name = filter_var($_POST['first_name'], FILTER_SANITIZE_STRING);
+	$last_name = filter_var($_POST['last_name'], FILTER_SANITIZE_STRING);
     /*** now we can encrypt the password ***/
     $password = sha1( $password );
     
@@ -58,34 +77,32 @@ else
         /*** $message = a message saying we have connected ***/
         /*** set the error mode to excptions ***/
         $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        /*** prepare the select statement ***/
-        $stmt = $dbh->prepare("SELECT user_id, username, password FROM users 
-                    WHERE username = :username AND password = :password");
+        /*** prepare the insert ***/
+        $stmt = $dbh->prepare("INSERT INTO users (username, password, first_name, last_name ) VALUES (:username, :password, :first_name, :last_name)");
         /*** bind the parameters ***/
         $stmt->bindParam(':username', $username, PDO::PARAM_STR, 50);
         $stmt->bindParam(':password', $password, PDO::PARAM_STR, 40);
+		$stmt->bindParam(':first_name', $first_name, PDO::PARAM_STR, 50);
+		$stmt->bindParam(':last_name', $last_name, PDO::PARAM_STR, 50);
         /*** execute the prepared statement ***/
         $stmt->execute();
-        /*** check for a result ***/
-        $user_id = $stmt->fetchColumn();
-        /*** if we have no result then fail boat ***/
-        if($user_id == false)
-        {
-                $message = 'Login Failed';
-        }
-        /*** if we do have a result, all is well ***/
-        else
-        {
-                /*** set the session user_id variable ***/
-                $_SESSION['user_id'] = $user_id;
-                /*** tell the user we are logged in ***/
-                header("Location: /home.php");
-        }
+		
+        /*** if all is done, head to home page ***/
+        header("Location: /home.php");
+		exit;
     }
     catch(Exception $e)
     {
-        /*** if we are here, something has gone wrong with the database ***/
-        $message = 'We are unable to process your request. Please try again later"';
+        /*** check if the username already exists ***/
+        if( $e->getCode() == 23000)
+        {
+            $message = 'Username already exists';
+        }
+        else
+        {
+            /*** if we are here, something has gone wrong with the database ***/
+            $message = 'We are unable to process your request. Please try again later"';
+        }
     }
 }
 }

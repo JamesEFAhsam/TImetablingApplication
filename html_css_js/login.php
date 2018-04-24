@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 	<head>
 		<title>Login</title>
@@ -15,23 +14,23 @@
 		<h1>SMARTROTA</h1>
 	</div>
 	</div>
-	<form action="login_submit.php" method="post">
+	<form action="" method="post">
 	<fieldset>
 		<div class = "tableCell2">
 			<label for="username">Username:</label> 
-			<input type="text" id="username" name="username" value="" maxlength="20" />
+			<input type="text" id="username" name="username" maxlength="20" />
 		</div>
 	<div class = "tableRow2">
 		<div class = "tableCell3">
 			<br>
 			<label for="password">Password:</label> 
-			<input type="password" id="password" name="password" value="" maxlength="20" />
+			<input type="password" id="password" name="password" maxlength="20" />
 		</div>
 	</div>
 	<div class = "tableRow3">
 		<div class = "tableCell4">
 			<br>
-			<input type="submit" value="&rarr; Login" />
+			<input type="submit" id="login1" name="login1" value="&rarr; Login" />
 		</div>
 	</div>
 	</div>
@@ -42,7 +41,6 @@
 			<br>
 			<form action="" >
 				<a href="signup.php" class = "signUp" >SignUp<a/>
-				<!--<a id="loginA" class = "login">Login<a/> HEY GINO REPLACED THIS AGAIN, NOT SURE WHAT BEST SOLUTION IS. -->
 				<a href="managersignup.html" class = "login">Manager SignUp<a/>
 			</form>
 		</div>
@@ -54,6 +52,7 @@
 	</div>
 	</div>
 	</div>
+	<?php include 'login_submit.php' ?>
 <script  src="main.js"></script>
 	</body>
 </html>

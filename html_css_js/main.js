@@ -1,13 +1,13 @@
 //to login like user - user name and pass user/user
 //to login like manager - user name and pass manager/manager
 function login(){
-	if(location.href.indexOf('login.html') !== -1){
+	if(location.href.indexOf('login.php') !== -1){
 	document.getElementById('loginA').addEventListener('click', function(){
 		var name= document.getElementById('username').value;
 		var pass= document.getElementById('password').value;
 		if((name === 'user')&& (pass==='user')){
 			alert('Logged Successfully');
-			location.href = 'home.html';
+			location.href = 'home.php';
 		}
 		else if((name === 'manager')&& (pass==='manager')){
 			alert('Logged Successfully');
@@ -38,7 +38,7 @@ function addComment(){
 		}
 }
 function showComments(){
-	if(location.href.indexOf('/home.html') !== -1){
+	if(location.href.indexOf('/home.php') !== -1){
 		document.getElementById('comments').value+='Sales have been up this week!\r';
 		var comments = localStorage.getItem('comments')?JSON.parse(localStorage.getItem('comments')):[];
 		comments.forEach(function(elem){
