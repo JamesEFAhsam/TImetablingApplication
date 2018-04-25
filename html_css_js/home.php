@@ -70,14 +70,12 @@ include 'login_test.php';
 				<h2>Manager's Comments:</h2>
 				<textarea id="comments" type="" class="comments" value="Sales have been up this week!" readonly></textarea>
 				<br><br>
+				<br>
+				<button class="logOutButton" value="Log Out">Log Out</button>
+				<br>
 			</form>
 			<br><br>
 		</div>
-		<form>
-			<br>
-			<button class="logOutButton" value="Log Out">Log Out</button>
-			<br>
-		</form>	
 	</div>
 	<div class = "tableRow4">
 		<div class = "tableEnd">
