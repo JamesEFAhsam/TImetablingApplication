@@ -58,7 +58,6 @@ include 'login_test.php';
 				<td> 4PM - 11PM </td>
 				<td> 4PM - 11PM </td>
 			</tr>
-			<tr>
 			</table>
 		</div>
 	</div>
