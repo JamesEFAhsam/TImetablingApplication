@@ -1,12 +1,12 @@
 <html>
 	<head>
 		<title>Login</title>
-		<link rel="stylesheet" href="stylesheet.css" type="text/css"/>
+		<link rel="stylesheet" href="css/stylesheet.css" type="text/css"/>
 		<meta name="viewport" content="width=device-width,initial-scale=1.0">
 	</head>
-	
+
 	<body>
-	
+
 	<div class = "tableStart">
 	<div class = "tableBody">
 	<div class = "tableTitle">
@@ -17,13 +17,13 @@
 	<form action="login_submit.php" method="post">
 	<fieldset>
 		<div class = "tableCell2">
-			<label for="username">Username:</label> 
+			<label for="username">Username:</label>
 			<input type="text" id="username" name="username" maxlength="20" />
 		</div>
 	<div class = "tableRow2">
 		<div class = "tableCell3">
 			<br>
-			<label for="password">Password:</label> 
+			<label for="password">Password:</label>
 			<input type="password" id="password" name="password" maxlength="20" />
 		</div>
 	</div>
@@ -52,6 +52,6 @@
 	</div>
 	</div>
 	</div>
-<script  src="main.js"></script>
+<script  src="js/main.js"></script>
 	</body>
 </html>

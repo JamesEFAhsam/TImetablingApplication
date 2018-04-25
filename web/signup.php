@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<title>Sign Up</title>
-		<link rel="stylesheet" href="stylesheet.css" type="text/css"/>
+		<link rel="stylesheet" href="css/stylesheet.css" type="text/css"/>
 		<meta name="viewport" content="width=device-width,initial-scale=1.0">
 	</head>
 
@@ -17,11 +17,11 @@
 		<div class = "tableCell2">
 			<h2>Sign Up</h2>
 			<form action="signup_submit.php" method="post">
-			<fieldset>	
+			<fieldset>
 				<label for="first_name"> First Name: </label>
 				<br>
 				<input type="text" id="first_name" name="first_name" value="" maxlength="20"/>
-				<br><br>			
+				<br><br>
 				<label for="last_name"> Last Name: </label>
 				<br>
 				<input type="text" id="last_name" name="last_name" value="" maxlength="20"/>
@@ -52,6 +52,6 @@
 	</div>
 	</div>
 	</div>
-	<script  src="main.js"></script>
-	</body>	
+	<script  src="js/main.js"></script>
+	</body>
 </html>

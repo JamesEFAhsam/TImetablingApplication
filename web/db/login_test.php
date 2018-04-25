@@ -4,7 +4,7 @@ session_start();
 if(!isset($_SESSION['user_id']))
 {
     $message = 'You must be logged in to access this page';
-	header("Location: /login.php");
+	header("Location: ../login.php");
 }
 else
 {
@@ -25,7 +25,7 @@ else
         /*** set the error mode to excptions ***/
         $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         /*** prepare the insert ***/
-        $stmt = $dbh->prepare("SELECT username FROM users 
+        $stmt = $dbh->prepare("SELECT username FROM users
         WHERE user_id = :user_id");
         /*** bind the parameters ***/
         $stmt->bindParam(':user_id', $_SESSION['user_id'], PDO::PARAM_INT);

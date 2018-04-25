@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<title>Manager Sign Up</title>
-		<link rel="stylesheet" href="stylesheet.css" type="text/css"/>
+		<link rel="stylesheet" href="css/stylesheet.css" type="text/css"/>
 		<meta name="viewport" content="width=device-width,initial-scale=1.0">
 	</head>
 
@@ -17,11 +17,11 @@
 		<div class = "tableCell2">
 			<h2>Manager Sign Up</h2>
 			<form action="manager_signup_submit.php" method="post">
-			<fieldset>	
+			<fieldset>
 				<label for="manager_first_name_name"> Manager First Name: </label>
 				<br>
 				<input type="text" id="manager_first_name" name="manager_first_name" value="" maxlength="20"/>
-				<br><br>			
+				<br><br>
 				<label for="manager_last_name"> Manager Last Name: </label>
 				<br>
 				<input type="text" id="manager_last_name" name="manager_last_name" value="" maxlength="20"/>
@@ -52,6 +52,6 @@
 	</div>
 	</div>
 	</div>
-<script  src="main.js"></script>
+<script  src="js/main.js"></script>
 	</body>
 </html>
