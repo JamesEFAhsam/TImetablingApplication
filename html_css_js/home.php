@@ -71,6 +71,11 @@ include 'login_test.php';
 			</form>
 			<br><br>
 		</div>
+		<form>
+			<br>
+			<button class="logOutButton" value="Log Out">Log Out</button>
+			<br>
+		</form>	
 	</div>
 	<div class = "tableRow4">
 		<div class = "tableEnd">
