@@ -141,6 +141,17 @@ input[type=text] {
     margin-right:10px;
 }
 
+.logOutButton{
+	float: right;
+	background-color: #E1E1E7;
+	border: 1px solid black;
+    color: black;
+    text-align: center;
+    font-size: 14px;
+    cursor: pointer;
+    margin-right:10px;
+}
+
 .username, .password{
 	padding: 10px, 10px;
 }
