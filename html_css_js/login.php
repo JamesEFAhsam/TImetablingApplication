@@ -30,7 +30,7 @@
 	<div class = "tableRow3">
 		<div class = "tableCell4">
 			<br>
-			<input type="submit" id="login1" name="login1" value="&rarr; Login" />
+			<input type="submit" id="login1" class="signUp" name="login1" value="&rarr; Login" />
 		</div>
 	</div>
 	</div>
