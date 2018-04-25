@@ -1,14 +1,18 @@
 function conflictChecker(){
-  var numOfRanks = 0;
+  // var numOfRanks = 0;
   var managerNum = 0;
   var employeeNum = 0;
   var managerCheck = [0,0,0,0,0,0,0];
   var employeeCheck = [0,0,0,0,0,0,0];
 
+/* 
+  This is for more than 2 ranks, right now we only have manager and employee
+  
   people.forEach(function(person){
     if(person.getConstraint(0).data > numOfRanks) numOfRanks = person.getConstraint(0).data;
   });
   numOfRanks += 1;
+*/
 
 /*
      Iterating through the array, add up the number of managers and employees.
@@ -32,7 +36,7 @@ function conflictChecker(){
       }
     }
   });
-  
+
   managerCheck.forEach(function(day){
     if(day == managerNum) return false;
   });
@@ -41,15 +45,13 @@ function conflictChecker(){
   });
 
   // Similar check for working hours
-  var totalHours; // Decided by the client (We'll do 2 shifts per day, 7 hours per shift for now)
-  var pplperShift; // How many employees needed for one week
+  var totalHours = 98; // Decided by the client (We'll do 2 shifts per day, 7 hours per shift for now, 2*7*7 = 98 hours/week)
+  var pplperShift; // How many employees needed for one shift, will get the information from database
   var workHours = 0;
-  people.forEach(function(person) {
+  people.forEach(function(person){
     if(person.getConstraint(0).data == 0) workHours += person.getConstraint(1).data;
   });
   console.log(workHours);
-  if(workHours/pplperShift < totalHours) {
-    return false;
-  }
+  if(workHours/pplperShift < totalHours) return false;
   return true;
 }
