@@ -30,7 +30,7 @@ include 'login_test.php';
 	<br>
 	<div class = "tableRow2">
 		<div class = "rotaSection">
-						<table id="rotaTable">
+			<table id="rotaTable">
 			<tr>
 				<th> MON </th>
 				<th> TUES </th>
