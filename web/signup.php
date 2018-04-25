@@ -16,7 +16,7 @@
 	</div>
 		<div class = "tableCell2">
 			<h2>Sign Up</h2>
-			<form action="signup_submit.php" method="post">
+			<form action="db/signup_submit.php" method="post">
 			<fieldset>
 				<label for="first_name"> First Name: </label>
 				<br>

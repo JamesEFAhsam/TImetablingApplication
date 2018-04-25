@@ -1,1 +1,1 @@
-<?php header("Location: /login.php")?>
+<?php header("Location: " .  $_SERVER['REQUEST_URI'] . "login.php")?>
