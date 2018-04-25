@@ -34,7 +34,7 @@
 				<br>
 				<input type="password" id="manager_password" name="manager_password" value="" maxlength="20"/>
 				<br><br>
-				<input type="submit" id="submit2" name="submit2" value="&rarr; ManagerSignup" />
+				<input type="submit" id="submit2" class="signUp" name="submit2" value="&rarr; ManagerSignup" />
 				</fieldset>
 			</form>
 		</div>
