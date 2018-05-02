@@ -39,7 +39,7 @@
         people.sort(function(a, b){return b.constraintRating-a.constraintRating});
       }
       
-      function conflictChecker(){
+      function conflictChecker(juniorNum){
         //var numOfRanks = 0;
         var managerNum = 0;
         var employeeNum = 0;
@@ -73,7 +73,7 @@
   
         // Similar check for working hours
         var totalHours = 98; // Decided by the client (We'll do 2 shifts per day, 7 hours per shift for now)
-        var pplperShift = 2; // How many employees needed for one week
+        // var pplperShift = 2; How many employees needed for one week
         var workHours = 0;
         people.forEach(function(person){
             if(person.getConstraint(0).data == 0) {
@@ -82,11 +82,10 @@
             }    
         });
         console.log(workHours);
-        if(workHours/pplperShift < totalHours) return false;
+        if(workHours/juniorNum < totalHours) return false;
         return true;
     }
-      
-      
+            
       var days = {
         Monday: 0,
         Tuesday: 1,
@@ -107,15 +106,19 @@
       var jsArr;
       var people = [];
       var reqes = new XMLHttpRequest();
+      var numOfJunior = 2;
       reqes.onreadystatechange = function(){
         if(this.readyState == 4 && this.status == 200){
           jsArr = JSON.parse(this.responseText);
           console.log(jsArr);
           jsArr.forEach(function(item){
-            var guy =new person(item.name, [new constraint(0, ranks[item.rank]), new constraint(1, item.hours), new constraint(2, [days[item.dayoff]])]);
-            people.push(guy);
+            if(typeof item === 'object'){
+              var guy =new person(item.name, [new constraint(0, ranks[item.rank]), new constraint(1, item.hours), new constraint(2, [days[item.dayoff]])]);
+              people.push(guy);
+            }else if(typeof item === 'number') numOfJunior = item;
           });
-          if(conflictChecker() == true) sortPerson();
+          console.log(numOfJunior);
+          if(conflictChecker(numOfJunior) == true) sortPerson();
           else console.log("there is a conflict!");
           console.log(people);
         }
