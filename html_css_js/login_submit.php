@@ -3,6 +3,7 @@
 session_start();
 /*** check if the users is already logged in ***/
 
+
 if(isset( $_SESSION['user_id'] ))
 {
     $message = 'User is already logged in';
@@ -75,10 +76,14 @@ else
         /*** if we do have a result, all is well ***/
         else
         {
-                /*** set the session user_id variable ***/
                 $_SESSION['user_id'] = $user_id;
-                /*** tell the user we are logged in ***/
-                header("Location: /home.php");
+				//$sql = "SELECT is_manager FROM users WHERE username=:username";
+				//$results = $dbh->query($sql);
+				//if ($results == 1){
+					//header("Location: /managerhome.php");
+				//}
+					header("Location: /home.php");
+				
         }
     }
     catch(Exception $e)
