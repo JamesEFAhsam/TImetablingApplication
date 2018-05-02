@@ -53,7 +53,7 @@ function logOut() {
     document.getElementById('logOut').addEventListener('click', function (event) {
         if (confirm('Are you sure you want to LogOut?')) {
             event.preventDefault();
-            window.location = 'login.php';
+            window.location = 'logout.php';
         } else {
             event.preventDefault();
         }

@@ -59,7 +59,7 @@ include 'login_test.php';
 				<td> 4PM - 11PM </td>
 			</tr>
 			<tr>
-			</tr>
+		    </tr>
 			</table>
 		</div>
 	</div>
@@ -71,8 +71,7 @@ include 'login_test.php';
 				<textarea id="comments" type="" class="comments" value="Sales have been up this week!" readonly></textarea>
 				<br><br>
 				<br>
-				<button class="logOutButton" value="Log Out">Log Out</button>
-				<br>
+				<button id="logOut" class="logOutButton" value="Log Out">Log Out</button>
 			</form>
 			<br><br>
 		</div>
@@ -84,6 +83,6 @@ include 'login_test.php';
 	</div>
 	</div>
 	</div>
-<script  src="main.js"></script>
+    <script  src="main.js"></script>
 	</body>
 </html>
