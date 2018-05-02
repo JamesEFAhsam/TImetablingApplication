@@ -1,5 +1,5 @@
 function sortPerson(){
-  var hoursPerShift; // Retrive from website
+  var hoursPerShift = 7; // Predefined
   // Change the array name to whatever will store the person objects
   people.forEach(function(person){
     // Adding up constraints
