@@ -51,6 +51,8 @@
 
           var timetable = new table(weekday, shuffle(multiplyPeople(people)), shiftdata); //creates the timetable
           sendTimetable(timetable); //sends the new timetable to the db
+
+          window.location.replace("http://ebarker.uk/managerhome.php");
         }
       }
       reqes.open("get","getPerson.php",true);
