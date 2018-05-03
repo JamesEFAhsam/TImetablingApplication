@@ -13,6 +13,9 @@ function login() {
                 alert('Logged Successfully');
                 location.href = 'managerhome.html';
             }
+            else{
+                showPopUp("Wrong password or login. Login and password must be 'user' or 'manager'");
+            }
 
         });
     }
