@@ -7,7 +7,7 @@
   PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
   PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
   PDO::ATTR_EMULATE_PREPARES => false
-    );
+  );
 
   try{
     $pdo = new PDO("mysql:host=$mysql_hostname;dbname=$mysql_dbname", $mysql_username, $mysql_password,$opt);
@@ -23,6 +23,9 @@
       }
       array_push($personArr,$person);
     }
+    $stmt = $pdo->query("select number_junior_staff from manager_preferences;");
+    $numOfJunior = $stmt->fetchColumn();
+    array_push($personArr, $numOfJunior);
     echo json_encode($personArr);
   }catch (PDOException $e){
     exit("PDO Error: ".$e->getMessage());

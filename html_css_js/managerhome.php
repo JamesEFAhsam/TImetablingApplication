@@ -35,7 +35,7 @@
 </script>
 <html>
 	<head>
-		<title>Home Page</title>
+		<title>Manager Home Page</title>
 		<link rel="stylesheet" href="stylesheet.css" type="text/css"/>
 		<meta name="viewport" content="width=device-width,initial-scale=1.0">
 	</head>
@@ -51,10 +51,10 @@
 	</div>
 		<div class = "menuList">
 			<form action="" >
-				<a href="home.php" class = "presentButton" value = "rota">Rota</a>
-				<a href="requests.php" class = "menuButton" value = "request">Requests</a>
-				<a href="pref.php" class = "menuButton" value = "preference">Preferences</a>
-				<a href="ratings.php" class = "menuButton" value = "rating">Ratings</a>
+				<a href="managerhome.php" class = "presentButton" value = "rota">Rota</a>
+				<a href="managerrequests.php" class = "menuButton" value = "request">Requests</a>
+				<a href="managerpref.php" class = "menuButton" value = "preference">Preferences</a>
+				<a href="managerratings.php" class = "menuButton" value = "rating">Ratings</a>
 			</form>
 		</div>
 	</div>
@@ -97,14 +97,14 @@
 	<div class = "commentSection">
 		<div class = "comments">
 			<br><br>
-			<form action="">
+			<form action="" method="post">
 				<h2>Manager's Comments:</h2>
-				<textarea id="comments" type="" class="comments" value="<?php echo $comment; ?>" readonly></textarea>
+				<input type="" id="comment" class="comments" value="Insert Comments here" name="managerComment">
 				<br><br>
+				<input type="submit" class="signUp" value="Comment" name="managerCommentSubmit">
 				<br>
-				<button id="logOut" class="logOutButton" value="Log Out">Log Out</button>
+		        <button id="logOut" class="logOutButton" value="Log Out">Log Out</button>
 			</form>
-			<br><br>
 		</div>
 	</div>
 	<div class = "tableRow4">
@@ -114,6 +114,6 @@
 	</div>
 	</div>
 	</div>
-    <script  src="main.js"></script>
+<script  src="main.js"></script>
 	</body>
 </html>

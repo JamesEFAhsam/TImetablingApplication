@@ -35,7 +35,7 @@ try
     /*** execute the prepared statement ***/
     $stmt->execute();
     /*** check for a result ***/
-    $message = 'Requests submitted';
+	$message = 'Requests submitted';
 	}
 }
 catch(Exception $e)
