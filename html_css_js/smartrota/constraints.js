@@ -13,13 +13,13 @@ Print the array of nodes
 */
 
 var weekday = [
-  "MON",
-  "TUE",
-  "WED",
-  "THU",
-  "FRI",
-  "SAT",
-  "SUN"
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7
 ];
 
 /*
@@ -32,25 +32,28 @@ Constraint types and data;
 
 var people =
 [
-  new person("BOB", [new constraint(0, 1), new constraint(1, 12)]),
-  new person("ADRIAN", [new constraint(0, 1), new constraint(1, 24)]),
-  new person("JOHN", [new constraint(0, 0), new constraint(1, 8)]),
-  new person("ALEX", [new constraint(0, 0), new constraint(1, 12)]),
-  new person("FRED", [new constraint(0, 0), new constraint(1, 18)]),
-  new person("LEWIS", [new constraint(0, 0), new constraint(1, 16)]),
-  new person("AMBER", [new constraint(0, 0), new constraint(1, 24)]),
-  new person("EMMA", [new constraint(0, 0), new constraint(1, 16)]),
-  new person("JOANNE", [new constraint(0, 0), new constraint(1, 12)]),
-  new person("OLIVER", [new constraint(0, 0), new constraint(1, 20)])
+  new person(0, [new constraint(0, 1), new constraint(1, 12)]),
+  new person(1, [new constraint(0, 1), new constraint(1, 24)]),
+  new person(2, [new constraint(0, 0), new constraint(1, 8)]),
+  new person(3, [new constraint(0, 0), new constraint(1, 12)]),
+  new person(4, [new constraint(0, 0), new constraint(1, 18)]),
+  new person(5, [new constraint(0, 0), new constraint(1, 16)]),
+  new person(6, [new constraint(0, 0), new constraint(1, 24)]),
+  new person(7, [new constraint(0, 0), new constraint(1, 16)]),
+  new person(8, [new constraint(0, 0), new constraint(1, 12)]),
+  new person(9, [new constraint(0, 0), new constraint(1, 20)])
 ];
 
-var shiftdata = 4;
+var shiftdata = 2;
 
 var beforeTime = new Date().getTime();
 
 var timetable = new table(weekday, shuffle(multiplyPeople(people)), shiftdata);
 
-printTable(timetable);
+//printTable(timetable);
+
+document.body.innerHTML = JSON.stringify(timetable.getShifts());
+
 
 function multiplyPeople(people){
   var nPeople = [];
@@ -65,9 +68,9 @@ function multiplyPeople(people){
   return nPeople;
 }
 
-function person(name, constraints){
+function person(id, constraints){
   this.constraints = constraints;
-  this.name = name;
+  this.id = id;
   this.constraintRanking = 0;
 
   this.getConstraint = function(id){
@@ -103,6 +106,8 @@ function shift(day, time, assignment){
 }
 
 function table(weekday, people, shiftdata){
+
+  this.outed = false;
 
   this.shifts = [];
 
@@ -145,7 +150,7 @@ function table(weekday, people, shiftdata){
           if(this.shiftcopy[s].assignment.includes(rank.data)){
             for (var i = 0; i < this.shiftcopy[s].assignment.length; i++) {
               if(typeof this.shiftcopy[s].assignment[i] != "number"){
-                if(this.shiftcopy[s].assignment[i].name == chosenPerson.name){
+                if(this.shiftcopy[s].assignment[i].id == chosenPerson.id){
                   continue bshift;
                 }
               }
@@ -154,7 +159,7 @@ function table(weekday, people, shiftdata){
 
             var index = this.shiftcopy[s].assignment.indexOf(rank.data);
             this.shiftcopy[s].assignment[index] = chosenPerson;
-            console.log("Assigned " + chosenPerson.name + ", will be removed.");
+            console.log("Assigned " + chosenPerson.id + ", will be removed.");
             people.shift();
             assigned = true;
             break bshift;
@@ -175,20 +180,25 @@ function table(weekday, people, shiftdata){
     //i need to get it so that people can be removed from the algorithm
     console.log("Assigned " + assigned);
     if(!assigned){
-      console.log("Not Assigned " + chosenPerson.name + ", will be removed.");
+      console.log("Not Assigned " + chosenPerson.id + ", will be removed.");
       people.shift();
     }
   }
 
+  this.outshifts = [];
 
   this.getShifts = function(){
-    return sortShifts(this.finalshift);
+    if(this.outshifts.length <= 0){
+      this.outshifts = sortShifts(this.finalshift);
+    }
+    this.outed = true;
+    return this.outshifts;
   }
 }
 
 function printTable(table){
 
-  //var orderedShifts = sortShifts(table.finalshift);
+  var orderedShifts = table.getShifts();
 
   var nTable = document.createElement("TABLE");
   for (var i = 0; i < orderedShifts.length; i++) {
@@ -203,7 +213,7 @@ function printTable(table){
       if(typeof orderedShifts[i].assignment[b] == "number"){
         nTD.innerHTML = orderedShifts[i].assignment[b];
       } else {
-        nTD.innerHTML = orderedShifts[i].assignment[b].name;
+        nTD.innerHTML = orderedShifts[i].assignment[b].id;
       }
       nTR.appendChild(nTD);
     }
