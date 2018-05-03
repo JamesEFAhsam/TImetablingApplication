@@ -48,11 +48,11 @@ var shiftdata = 2;
 
 var beforeTime = new Date().getTime();
 
-var timetable = new table(weekday, shuffle(multiplyPeople(people)), shiftdata);
+//var timetable = new table(weekday, shuffle(multiplyPeople(people)), shiftdata);
 
 //printTable(timetable);
 
-document.body.innerHTML = JSON.stringify(timetable.getShifts());
+//document.body.innerHTML = JSON.stringify(timetable.getShifts());
 
 
 function multiplyPeople(people){

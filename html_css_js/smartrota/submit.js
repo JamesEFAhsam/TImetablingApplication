@@ -21,5 +21,3 @@ function sendTimetable(timetable) {
     xmlhttp.send("data="+JSON.stringify( timetable.getShifts() ));
 
 }
-
-sendTimetable(timetable);
