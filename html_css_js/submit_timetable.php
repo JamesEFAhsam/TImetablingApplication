@@ -9,7 +9,7 @@ $rota_id = 0;
 
 //todo create shifts in the db;
 
-/*$mysql_hostname = 'ebarker.uk.mysql';
+$mysql_hostname = 'ebarker.uk.mysql';
 $mysql_username = 'ebarker_uk';
 $mysql_password = 'DCEc8USZjKpaUKdibfmanDwt';
 $mysql_dbname = 'ebarker_uk';
@@ -23,7 +23,7 @@ try{
   $pdo = new PDO("mysql:host=$mysql_hostname;dbname=$mysql_dbname", $mysql_username, $mysql_password,$opt);
 }catch (PDOException $e){
   exit("PDO Error: ".$e->getMessage());
-}*/
+}
 
 foreach ($data as $shift) {
   echo "Shift "  . $shift->day . "/" . $shift->time . "<br/>";
