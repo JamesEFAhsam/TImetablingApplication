@@ -1,0 +1,244 @@
+/* Style Sheet for Group Project
+*
+*/
+
+body {
+	font-family: Helvetica, sans-serif;
+	background-color: white;
+	color: black;
+	font-size: 12px;
+}
+
+h1 {
+  font-family:
+    Verdana, sans-serif;
+    color: white;
+    font-size: 34px;
+    text-align: center;
+	text-decoration: bold;
+}
+
+h2{
+	font-family: Verdana, sans-serif;
+	color: black;
+	font-size: 14px;
+	text-align: left;
+	background-color:#8eb0d1;
+	border: solid black 1px;
+	width: 20%;
+}
+
+h3{
+	font-family: Verdana, sans-serif;
+	color: black;
+	font-size: 12px;
+	text-align: left;
+	display: inline-block;
+}
+
+h4 {
+  font-family:
+    Verdana, sans-serif;
+  color: white;
+  font-size: 14px;
+  text-align: center;
+	text-decoration: bold;
+}
+
+h5 {
+	font-family:
+    Verdana, sans-serif;
+    color: white;
+	font-style: italic;
+    font-size: 12px;
+    text-align: center;
+}
+
+h6{
+    font-family: Verdana, sans-serif;
+	color: black;
+	font-size: 18px;
+	text-decoration: bold;
+	text-align: left;
+	display: inline-block;
+}
+
+#rotaTable {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 900px;
+	border: 1px solid black;
+    padding: 8px;
+}
+
+#rotaTable, th, td {
+	border: 1px solid black;
+}
+
+#rotaTable th {
+	text-decoration: bold;
+	text-align: center;
+	background-color: #b3cccc;
+}
+
+#rotaTable tr:nth-child(even){background-color: #f2f2f2;}
+
+input[type=text] {
+		width: 40%;
+		padding: 12px. 20px;
+		margin: 12px, 0;
+		box-sizing: border-box;
+}
+
+
+.tableStart{
+	width: 100%;
+	max-width: 900px;
+	margin-left: 200px;
+	margin-right: 200px;
+}
+
+.tableTitle{
+	background-color: #000058;
+	align-content: center;
+}
+
+.tableCell2{
+	margin-left: 300px;
+	align-content: center;
+}
+
+.tableCell3{
+	margin-left: 300px;
+	align-content: center;
+}
+
+.tableCell4{
+	margin-left: 380px;
+	align-content: center;
+}
+
+.tableEnd{
+	background-color: #000058;
+	align-content: center;
+}
+
+.inputSection{
+	border: solid black 1px;
+	align-content: center;
+	background-color: #D3D3DD;
+	height: 450px;
+}
+
+.mangInputSection{
+	border: solid black 1px;
+	align-content: center;
+	background-color: #D3D3DD;
+	height: 590px;
+}
+
+.signUp, .login{
+	background-color: #8eb0d1;
+	border: 1px solid black;
+    color: black;
+	padding: 10px, 10px;
+    text-align: center;
+    text-decoration: underline;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    margin-right:10px;
+}
+
+.logOutButton{
+	float: right;
+	background-color: #E1E1E7;
+	border: 1px solid black;
+    color: black;
+    text-align: center;
+    font-size: 14px;
+    cursor: pointer;
+    margin-right:10px;
+}
+
+.username, .password{
+	padding: 10px, 10px;
+}
+
+.menuList{
+	align-content: left;
+	padding: 10px, 24px;
+	width: 60%;
+}
+
+.menuButton{
+	background-color: #DCDDE5;
+	-webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+	cursor: pointer;
+	border: 1px solid black;
+}
+
+.menuButton:hover{
+	background-color: #000058;
+	color: white;
+	text-decoration: bold;
+}
+
+.presentButton{
+	background-color: #000058;
+	color: white;
+	text-decoration: bold;
+	border: 1px solid black;
+}
+
+.commentSection{
+	height: 200px;
+}
+
+.comments{
+	background-color: white;
+	padding: 10px, 400px;
+	resize: none;
+	width: 100%;
+	max-width: 900px;
+  height: 70px;
+}
+
+.checkbox{
+	display: inline;
+}
+
+a {
+	text-decoration: none;
+}
+a:link{
+	color:black;
+}
+a:visited{
+	color:black;
+}
+a.presentButton{
+	color:white;
+}
+
+
+@media (max-width: 767px) { 
+#rotaTable, .tableRow2, .tableRow3 .tableStart,.comments,{
+	width: 70%;
+}
+.tableCell3,.tableCell2,  .tableCell4{
+	margin-left:20px;
+}
+ }
+
+
+@media (max-width: 480px) { 
+#rotaTable,.tableRow2, .tableRow3, .tableStart,.comments{
+	width: 40%;
+}
+.tableCell3,.tableCell2,  .tableCell4{
+	margin-left:20px;
+}
+} 
+}
