@@ -1,8 +1,8 @@
 function sortPerson(){
-  var hoursPerShift; // Retrive from website
+  var hoursPerShift = 7; // Retrive from website
   // Change the array name to whatever will store the person objects
   people.forEach(function(person){
-    // Adding up constraints
+  // Adding up constraints
     if(typeof person.getConstraint(2).data !== "undefined") person.constraintRating += person.getConstraint(2).data.length;
     person.constraintRating += (person.getConstraint(1).data)/10;
     person.constraintRating += person.getConstraint(0).data;
