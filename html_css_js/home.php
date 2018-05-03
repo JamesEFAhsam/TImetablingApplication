@@ -1,7 +1,38 @@
-<?php 
-include 'login_test.php';
-?>
-
+<script>
+    var shifts = {
+        0: "moM",
+        1: "moE",
+        2: "tuM",
+        3: "tuE",
+        4: "weM",
+        5: "weE",
+        6: "thM",
+        7: "thE",
+        8: "frM",
+        9: "frE",
+        10: "saM",
+        11: "saE",
+        12: "suM",
+        13: "suE"
+    }
+    var jsArr;
+    var reqes = new XMLHttpRequest();
+    reqes.onreadystatechange = function(){
+        if(this.readyState == 4 && this.status == 200){
+            jsArr = JSON.parse(this.responseText);
+            for(var i=0; i<jsArr.length; i++){
+                var people = "";
+                jsArr[i].forEach(function(employee){
+                    people += employee[0]+" "+employee[1]+"<br>";
+                });
+                document.getElementById(shifts[i]).innerHTML = people;
+            }
+        }
+    }
+    reqes.open("get","generateTimetable.php",true);
+    reqes.send();
+    
+</script>
 <html>
 	<head>
 		<title>Home Page</title>
@@ -20,10 +51,10 @@ include 'login_test.php';
 	</div>
 		<div class = "menuList">
 			<form action="" >
-				<a href="home.html" class = "presentButton" value = "rota">Rota</a>
-				<a href="requests.html" class = "menuButton" value = "request">Requests</a>
-				<a href="pref.html" class = "menuButton" value = "preference">Preferences</a>
-				<a href="ratings.html" class = "menuButton" value = "rating">Ratings</a>
+				<a href="home.php" class = "presentButton" value = "rota">Rota</a>
+				<a href="requests.php" class = "menuButton" value = "request">Requests</a>
+				<a href="pref.php" class = "menuButton" value = "preference">Preferences</a>
+				<a href="ratings.php" class = "menuButton" value = "rating">Ratings</a>
 			</form>
 		</div>
 	</div>
@@ -41,22 +72,22 @@ include 'login_test.php';
 				<th> SUN </th>
 			</tr>
 			<tr>
-				<td> 9AM - 4PM </td>
-				<td> 9AM - 4PM </td>
-				<td> 9AM - 4PM </td>
-				<td> 9AM - 4PM </td>
-				<td> 9AM - 4PM </td>
-				<td> 9AM - 4PM </td>
-				<td> 9AM - 4PM </td>
+				<td id ="moM"></td>
+				<td id ="tuM"></td>
+				<td id ="weM"></td>
+				<td id ="thM"></td>
+				<td id ="frM"></td>
+				<td id ="saM"></td>
+				<td id ="suM"></td>
 			</tr>
 			<tr>
-				<td> 4PM - 11PM </td>
-				<td> 4PM - 11PM </td>
-				<td> 4PM - 11PM </td>
-				<td> 4PM - 11PM </td>
-				<td> 4PM - 11PM </td>
-				<td> 4PM - 11PM </td>
-				<td> 4PM - 11PM </td>
+				<td id ="moE"></td>
+				<td id ="tuE"></td>
+				<td id ="weE"></td>
+				<td id ="thE"></td>
+				<td id ="frE"></td>
+				<td id ="saE"></td>
+				<td id ="suE"></td>
 			</tr>
 			<tr>
 		    </tr>
@@ -68,7 +99,7 @@ include 'login_test.php';
 			<br><br>
 			<form action="">
 				<h2>Manager's Comments:</h2>
-				<textarea id="comments" type="" class="comments" value="Sales have been up this week!" readonly></textarea>
+				<textarea id="comments" type="" class="comments" value="<?php echo $comment; ?>" readonly></textarea>
 				<br><br>
 				<br>
 				<button id="logOut" class="logOutButton" value="Log Out">Log Out</button>
