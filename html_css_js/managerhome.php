@@ -63,7 +63,6 @@
 		<div class = "rotaSection">
 			<table id="rotaTable">
 			<tr>
-				<th> STAFF </th>
 				<th> MON </th>
 				<th> TUES </th>
 				<th> WEDS </th>
