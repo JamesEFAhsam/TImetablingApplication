@@ -23,7 +23,7 @@ ON users.user_id = assigned_shift_user.user_id
 AND assigned_shift_user.day_id = '1'
 INNER JOIN shift
 ON assigned_shift_user.shift_id = shift.shift_id
-AND shift.time = '9am-4pm'");
+AND shift.time_id = '0'");
     $stmt->execute();
     $moM = $stmt->fetchAll();
     
@@ -34,7 +34,7 @@ ON users.user_id = assigned_shift_user.user_id
 AND assigned_shift_user.day_id = '1'
 INNER JOIN shift
 ON assigned_shift_user.shift_id = shift.shift_id
-AND shift.time = '4pm-11pm'");
+AND shift.time_id = '1'");
     $stmt->execute();
     $moE = $stmt->fetchAll();
     
@@ -45,7 +45,7 @@ ON users.user_id = assigned_shift_user.user_id
 AND assigned_shift_user.day_id = '2'
 INNER JOIN shift
 ON assigned_shift_user.shift_id = shift.shift_id
-AND shift.time = '9am-4pm'");
+AND shift.time_id = '0'");
     $stmt->execute();
     $tuM = $stmt->fetchAll();
     
@@ -56,7 +56,7 @@ ON users.user_id = assigned_shift_user.user_id
 AND assigned_shift_user.day_id = '2'
 INNER JOIN shift
 ON assigned_shift_user.shift_id = shift.shift_id
-AND shift.time = '4pm-11pm'");
+AND shift.time_id = '1'");
     $stmt->execute();
     $tuE = $stmt->fetchAll();
     
@@ -67,7 +67,7 @@ ON users.user_id = assigned_shift_user.user_id
 AND assigned_shift_user.day_id = '3'
 INNER JOIN shift
 ON assigned_shift_user.shift_id = shift.shift_id
-AND shift.time = '9am-4pm'");
+AND shift.time_id = '0'");
     $stmt->execute();
     $weM = $stmt->fetchAll();
     
@@ -78,7 +78,7 @@ ON users.user_id = assigned_shift_user.user_id
 AND assigned_shift_user.day_id = '3'
 INNER JOIN shift
 ON assigned_shift_user.shift_id = shift.shift_id
-AND shift.time = '4pm-11pm'");
+AND shift.time_id = '1'");
     $stmt->execute();
     $weE = $stmt->fetchAll();
     
@@ -89,7 +89,7 @@ ON users.user_id = assigned_shift_user.user_id
 AND assigned_shift_user.day_id = '4'
 INNER JOIN shift
 ON assigned_shift_user.shift_id = shift.shift_id
-AND shift.time = '9am-4pm'");
+AND shift.time_id = '0'");
     $stmt->execute();
     $thM = $stmt->fetchAll();
     
@@ -100,7 +100,7 @@ ON users.user_id = assigned_shift_user.user_id
 AND assigned_shift_user.day_id = '4'
 INNER JOIN shift
 ON assigned_shift_user.shift_id = shift.shift_id
-AND shift.time = '4pm-11pm'");
+AND shift.time_id = '1'");
     $stmt->execute();
     $thE = $stmt->fetchAll();
     
@@ -111,7 +111,7 @@ ON users.user_id = assigned_shift_user.user_id
 AND assigned_shift_user.day_id = '5'
 INNER JOIN shift
 ON assigned_shift_user.shift_id = shift.shift_id
-AND shift.time = '9am-4pm' ");
+AND shift.time_id = '0' ");
     $stmt->execute();
     $frM = $stmt->fetchAll();
     
@@ -122,7 +122,7 @@ ON users.user_id = assigned_shift_user.user_id
 AND assigned_shift_user.day_id = '5'
 INNER JOIN shift
 ON assigned_shift_user.shift_id = shift.shift_id
-AND shift.time = '4pm-11pm'");
+AND shift.time_id = '1'");
     $stmt->execute();
     $frE = $stmt->fetchAll();
     
@@ -133,7 +133,7 @@ ON users.user_id = assigned_shift_user.user_id
 AND assigned_shift_user.day_id = '6'
 INNER JOIN shift
 ON assigned_shift_user.shift_id = shift.shift_id
-AND shift.time = '9am-4pm'");
+AND shift.time_id = '0'");
     $stmt->execute();
     $saM = $stmt->fetchAll();
     
@@ -144,7 +144,7 @@ ON users.user_id = assigned_shift_user.user_id
 AND assigned_shift_user.day_id = '6'
 INNER JOIN shift
 ON assigned_shift_user.shift_id = shift.shift_id
-AND shift.time = '4pm-11pm'");
+AND shift.time_id = '1'");
     $stmt->execute();
     $saE = $stmt->fetchAll();
     
@@ -155,7 +155,7 @@ ON users.user_id = assigned_shift_user.user_id
 AND assigned_shift_user.day_id = '7'
 INNER JOIN shift
 ON assigned_shift_user.shift_id = shift.shift_id
-AND shift.time = '9am-4pm'");
+AND shift.time_id = '0'");
     $stmt->execute();
     $suM = $stmt->fetchAll();
     
@@ -166,7 +166,7 @@ ON users.user_id = assigned_shift_user.user_id
 AND assigned_shift_user.day_id = '7'
 INNER JOIN shift
 ON assigned_shift_user.shift_id = shift.shift_id
-AND shift.time = '4pm-11pm'");
+AND shift.time_id = '1'");
     $stmt->execute();
     $suE = $stmt->fetchAll();
     

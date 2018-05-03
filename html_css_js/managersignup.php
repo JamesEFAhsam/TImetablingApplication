@@ -16,7 +16,7 @@
 	</div>
 		<div class = "tableCell2">
 			<h2>Manager Sign Up</h2>
-			<form action="manager_signup_submit.php" method="post">
+			<form id="manager_signup" action="manager_signup_submit.php" method="post">
 			<fieldset>	
 				<label for="manager_first_name_name"> Manager First Name: </label>
 				<br>
@@ -34,7 +34,16 @@
 				<br>
 				<input type="password" id="manager_password" name="manager_password" value="" maxlength="20"/>
 				<br><br>
-				<input type="submit" id="submit2" class="signUp" name="submit2" value="&rarr; ManagerSignup" />
+				<label for="contracted_hours"> Contracted hours: </label>
+				<br>
+				<input type="number" id="manager_contracted_hours" name="manager_contracted_hours" value="" min="0" max="100"/>
+				<br><br>
+				<select id="manager_rank" name="manager_rank" form="manager_signup">
+                  <option value="senior">Senior</option>
+                  <option value="junior">Junior</option>
+                </select>
+                <br><br>
+				<input type="submit" id="submit2" name="submit2" value="&rarr; ManagerSignup" />
 				</fieldset>
 			</form>
 		</div>

@@ -58,6 +58,8 @@ else
     $password = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
 	$first_name = filter_var($_POST['first_name'], FILTER_SANITIZE_STRING);
 	$last_name = filter_var($_POST['last_name'], FILTER_SANITIZE_STRING);
+	$contracted_hours = $_POST['contracted_hours'];
+	$rank = $_POST['rank'];
     /*** now we can encrypt the password ***/
     $password = sha1( $password );
     
@@ -77,12 +79,14 @@ else
         /*** set the error mode to excptions ***/
         $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         /*** prepare the insert ***/
-        $stmt = $dbh->prepare("INSERT INTO users (username, password, first_name, last_name ) VALUES (:username, :password, :first_name, :last_name)");
+        $stmt = $dbh->prepare("INSERT INTO users (username, password, first_name, last_name, contracted_hours, rank) VALUES (:username, :password, :first_name, :last_name, :contracted_hours, :rank)");
         /*** bind the parameters ***/
         $stmt->bindParam(':username', $username, PDO::PARAM_STR, 50);
         $stmt->bindParam(':password', $password, PDO::PARAM_STR, 40);
 		$stmt->bindParam(':first_name', $first_name, PDO::PARAM_STR, 50);
 		$stmt->bindParam(':last_name', $last_name, PDO::PARAM_STR, 50);
+		$stmt->bindParam(':contracted_hours', $contracted_hours, PDO::PARAM_INT, 4);
+		$stmt->bindParam(':rank', $rank, PDO::PARAM_STR, 6);
         /*** execute the prepared statement ***/
         $stmt->execute();
 		
@@ -105,5 +109,4 @@ else
     }
 }
 ?>
-
-<p><?php echo $message; ?>
+<?php echo $message; ?>

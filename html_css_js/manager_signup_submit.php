@@ -58,7 +58,9 @@ else
     $manager_password = filter_var($_POST['manager_password'], FILTER_SANITIZE_STRING);
 	$manager_first_name = filter_var($_POST['manager_first_name'], FILTER_SANITIZE_STRING);
 	$manager_last_name = filter_var($_POST['manager_last_name'], FILTER_SANITIZE_STRING);
-    /*** now we can encrypt the password ***/
+    $manager_contracted_hours = $_POST['manager_contracted_hours'];
+	$manager_rank = $_POST['manager_rank'];
+	/*** now we can encrypt the password ***/
     $manager_password = sha1( $manager_password );
     
     /*** connect to database ***/
@@ -77,14 +79,16 @@ else
         /*** set the error mode to excptions ***/
         $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         /*** prepare the insert ***/
-        $stmt = $dbh->prepare("INSERT INTO users (username, password, first_name, last_name, is_manager) VALUES (:manager_username, :manager_password, :manager_first_name, :manager_last_name, 1)");
+        $stmt = $dbh->prepare("INSERT INTO users (username, password, first_name, last_name, is_manager, contracted_hours, rank) VALUES (:manager_username, :manager_password, :manager_first_name, :manager_last_name, 1, :manager_contracted_hours, :manager_rank)");
 		// $stmt = $dbh->prepare("UPDATE users SET is_manager=1 WHERE username=':manager_username'");
         /*** bind the parameters ***/
         $stmt->bindParam(':manager_username', $manager_username, PDO::PARAM_STR, 50);
         $stmt->bindParam(':manager_password', $manager_password, PDO::PARAM_STR, 40);
 		$stmt->bindParam(':manager_first_name', $manager_first_name, PDO::PARAM_STR, 50);
 		$stmt->bindParam(':manager_last_name', $manager_last_name, PDO::PARAM_STR, 50);
-        /*** execute the prepared statement ***/
+        $stmt->bindParam(':manager_contracted_hours', $manager_contracted_hours, PDO::PARAM_INT, 4);
+		$stmt->bindParam(':manager_rank', $manager_rank, PDO::PARAM_STR, 6);
+		/*** execute the prepared statement ***/
         $stmt->execute();
 		
         /*** if all is done, head to home page ***/
@@ -106,5 +110,4 @@ else
     }
 }
 ?>
-
-<p><?php echo $message; ?>
+<?php echo $message; ?>

@@ -59,7 +59,7 @@ else
         /*** set the error mode to excptions ***/
         $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         /*** prepare the select statement ***/
-        $stmt = $dbh->prepare("SELECT user_id, username, password FROM users 
+        $stmt = $dbh->prepare("SELECT user_id, username, password, is_manager FROM users 
                     WHERE username = :username AND password = :password");
         /*** bind the parameters ***/
         $stmt->bindParam(':username', $username, PDO::PARAM_STR, 50);
@@ -67,7 +67,9 @@ else
         /*** execute the prepared statement ***/
         $stmt->execute();
         /*** check for a result ***/
-        $user_id = $stmt->fetchColumn();
+        $userInfo = $stmt->fetch();
+        $user_id = $userInfo[0];
+        $is_manager = $userInfo[3];
         /*** if we have no result then fail boat ***/
         if($user_id == false)
         {
@@ -77,13 +79,17 @@ else
         else
         {
                 $_SESSION['user_id'] = $user_id;
+                $_SESSION['is_manager'] = $is_manager;
 				//$sql = "SELECT is_manager FROM users WHERE username=:username";
 				//$results = $dbh->query($sql);
 				//if ($results == 1){
 					//header("Location: /managerhome.php");
 				//}
-					header("Location: /home.php");
-				
+				if($_SESSION['is_manager'] == 1){
+				    header("Location: /managerhome.php");
+				} else {
+				    header("Location: /home.php");
+				}
         }
     }
     catch(Exception $e)

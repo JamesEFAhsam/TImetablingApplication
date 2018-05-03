@@ -107,7 +107,7 @@ function submitPref() {
 }
 
 function submitHReq() {
-    if (location.href.indexOf('requests.html') !== -1) {
+    if ((location.href.indexOf('requests.html') !== -1)){
         function check() {
             var inps = [];
             inps.push(document.querySelectorAll('input')[0]);
@@ -124,7 +124,7 @@ function submitHReq() {
 
         }
 
-        document.getElementById('submitHReq').onclick = function (e) {
+        document.getElementById('submitHol').onclick = function (e) {
             e.preventDefault();
             if (check() === false) {
                 alert('Fill all fields, pls');
