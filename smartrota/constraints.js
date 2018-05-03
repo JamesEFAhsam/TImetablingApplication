@@ -48,7 +48,7 @@ var shiftdata = 4;
 
 var beforeTime = new Date().getTime();
 
-var timetable = new table(weekday, multiplyPeople(people), shiftdata);
+var timetable = new table(weekday, shuffle(multiplyPeople(people)), shiftdata);
 
 printTable(timetable);
 
@@ -108,71 +108,102 @@ function table(weekday, people, shiftdata){
 
   for (var i = 0; i < weekday.length; i++) {
     for (var x = 0; x < shiftdata; x++) {
-      this.shifts.push(new shift(weekday[i], x, [1,0,0,0,0]));
+      this.shifts.push(new shift(weekday[i], x, [1, 0, 0, 0, 0]));
     }
   }
 
-  this.shiftcopy = this.shifts;
+  this.shiftcopy = shuffle(this.shifts);
+  this.finalshift = [];
 
+  var a = 0;
 
   pout:
-  while(people.length > 0){
+  while(people.length > 0 && a < 200){
+    a++;
     var chosenPerson = people[0];
 
-    var override = true;
-    for (var i = 0; i < this.shifts.length; i++) {
-      if(!this.shifts[i].isFull){
-        override = false;
-      }
-    }
-
-    if(override){
-      break pout;
+    if(this.shiftcopy.length <= 0){
+        break pout;
     }
 
     console.log(chosenPerson);
     console.log(people);
 
     bshift:
-    for (var s = 0; s < this.shifts.length; s++) {
-        if(this.shifts[s].isFull){
+    for (var s = 0; s < this.shiftcopy.length; s++) {
+      var assigned = false;
+
+        //console.log("Shift " + s + ": " + this.shifts[s].isFull());
+        if(this.shiftcopy[s].isFull()){
+          //console.log(this.shifts[s]);
           continue;
         }
 
         var rank = chosenPerson.getConstraint(0);
 
         if (rank != false) {
-          if(this.shifts[s].assignment.includes(rank.data)){
-            for (var i = 0; i < this.shifts[s].assignment.length; i++) {
-              if(typeof this.shifts[s].assignment[i] != "number"){
-                if(this.shifts[s].assignment[i].name == chosenPerson.name){
+          if(this.shiftcopy[s].assignment.includes(rank.data)){
+            for (var i = 0; i < this.shiftcopy[s].assignment.length; i++) {
+              if(typeof this.shiftcopy[s].assignment[i] != "number"){
+                if(this.shiftcopy[s].assignment[i].name == chosenPerson.name){
                   continue bshift;
                 }
               }
             }
 
-            var index = this.shifts[s].assignment.indexOf(rank.data);
-            this.shifts[s].assignment[index] = chosenPerson;
+
+            var index = this.shiftcopy[s].assignment.indexOf(rank.data);
+            this.shiftcopy[s].assignment[index] = chosenPerson;
+            console.log("Assigned " + chosenPerson.name + ", will be removed.");
             people.shift();
+            assigned = true;
             break bshift;
           }
         }
     }
+
+
+    for (var i = 0; i < this.shiftcopy.length; i++) {
+      if(this.shiftcopy[i].isFull()){
+        this.finalshift.push(this.shiftcopy[i]);
+        this.shiftcopy.splice(i, 1);
+        console.log("Removing: ");
+        console.log(this.shiftcopy);
+      }
+    }
+
+    //i need to get it so that people can be removed from the algorithm
+    console.log("Assigned " + assigned);
+    if(!assigned){
+      console.log("Not Assigned " + chosenPerson.name + ", will be removed.");
+      people.shift();
+    }
   }
 
+
+  this.getShifts = function(){
+    return sortShifts(this.finalshift);
+  }
 }
 
 function printTable(table){
 
+  //var orderedShifts = sortShifts(table.finalshift);
+
   var nTable = document.createElement("TABLE");
-  for (var i = 0; i < table.shifts.length; i++) {
+  for (var i = 0; i < orderedShifts.length; i++) {
     var nTR = document.createElement("TR");
-    for (var b = 0; b < table.shifts[i].assignment.length; b++) {
+    var nTD = document.createElement("TD");
+    nTD.innerHTML = orderedShifts[i].day + orderedShifts[i].time;
+    nTR.appendChild(nTD);
+
+
+    for (var b = 0; b < orderedShifts[i].assignment.length; b++) {
       var nTD = document.createElement("TD");
-      if(typeof table.shifts[i].assignment[b] == "number"){
-        nTD.innerHTML = table.shifts[i].assignment[b];
+      if(typeof orderedShifts[i].assignment[b] == "number"){
+        nTD.innerHTML = orderedShifts[i].assignment[b];
       } else {
-        nTD.innerHTML = table.shifts[i].assignment[b].name;
+        nTD.innerHTML = orderedShifts[i].assignment[b].name;
       }
       nTR.appendChild(nTD);
     }
@@ -186,5 +217,40 @@ function constraint(id, data){
   this.data = data;
 }
 
+function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex;
 
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+}
+
+function sortShifts(shifts){
+  var newArray = [];
+  var oldArray = shifts;
+  for (var i = 0; i < weekday.length; i++) {
+    for (var s = 0; s < shiftdata; s++) {
+      found:
+      for (var b = 0; b < oldArray.length; b++) {
+        if(oldArray[b].day == weekday[i] && oldArray[b].time == s){
+          newArray.push(oldArray[b]);
+          oldArray.splice(b, 1);
+          break found;
+        }
+      }
+    }
+  }
+  return newArray;
+}
 
