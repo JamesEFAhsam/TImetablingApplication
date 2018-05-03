@@ -72,7 +72,13 @@
 				<br><br>
 				<h2>Employee:</h2>
 				<select name="employeeName">
-						<option value ="">Select an Employee</option>
+					<option value ="">Select an Employee</option>
+					<option value="edward">Edward Barker</option>
+					<option value="james">James Ahsam</option>
+					<option value="flo">Florence Picciuto</option>
+					<option value="gino">Gino Zambelli</option>
+					<option value="whizzy">Wanghao Long</option>
+					<option value="richard">Xixuan Zhu</option>	
 				</select>
 				<br>
 				<h3>
