@@ -32,16 +32,16 @@ Constraint types and data;
 
 var people =
 [
-  new person(0, [new constraint(0, 1), new constraint(1, 12)]),
-  new person(1, [new constraint(0, 1), new constraint(1, 24)]),
-  new person(2, [new constraint(0, 0), new constraint(1, 8)]),
-  new person(3, [new constraint(0, 0), new constraint(1, 12)]),
-  new person(4, [new constraint(0, 0), new constraint(1, 18)]),
-  new person(5, [new constraint(0, 0), new constraint(1, 16)]),
-  new person(6, [new constraint(0, 0), new constraint(1, 24)]),
-  new person(7, [new constraint(0, 0), new constraint(1, 16)]),
-  new person(8, [new constraint(0, 0), new constraint(1, 12)]),
-  new person(9, [new constraint(0, 0), new constraint(1, 20)])
+  new person(12, [new constraint(0, 1), new constraint(1, 12)]),
+  new person(13, [new constraint(0, 1), new constraint(1, 24)]),
+  new person(14, [new constraint(0, 0), new constraint(1, 8)]),
+  new person(15, [new constraint(0, 0), new constraint(1, 12)]),
+  new person(16, [new constraint(0, 0), new constraint(1, 18)]),
+  new person(17, [new constraint(0, 0), new constraint(1, 16)]),
+  new person(62, [new constraint(0, 0), new constraint(1, 24)]),
+  new person(71, [new constraint(0, 0), new constraint(1, 16)]),
+  new person(73, [new constraint(0, 0), new constraint(1, 12)]),
+  new person(75, [new constraint(0, 0), new constraint(1, 20)])
 ];
 
 var shiftdata = 2;

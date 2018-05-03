@@ -6,7 +6,7 @@ body {
 	font-family: Helvetica, sans-serif;
 	background-color: white;
 	color: black;
-	font-size: 14px;
+	font-size: 12px;
 }
 
 h1 {
@@ -25,7 +25,7 @@ h2{
 	text-align: left;
 	background-color:#8eb0d1;
 	border: solid black 1px;
-	width: 40%;
+	width: 20%;
 }
 
 h3{
@@ -52,6 +52,15 @@ h5 {
 	font-style: italic;
     font-size: 12px;
     text-align: center;
+}
+
+h6{
+    font-family: Verdana, sans-serif;
+	color: black;
+	font-size: 18px;
+	text-decoration: bold;
+	text-align: left;
+	display: inline-block;
 }
 
 #rotaTable {

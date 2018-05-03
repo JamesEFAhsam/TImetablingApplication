@@ -32,7 +32,7 @@ foreach ($data as $shift) {
     try{
       $stmt = $pdo->query("INSERT INTO assigned_shift_user (shift_id,user_id,day_id,rota_id)
       VALUES ((SELECT shift_id FROM shift WHERE time_id = " . $shift->time . " AND day_id = " . $shift->day . ")," . $personinshift->id . "," . $shift->day . "," . $rota_id . ");");
-    catch (PDOException $e){
+    }catch (PDOException $e){
       exit("PDO Error: ".$e->getMessage());
     }
     echo "PERSON " . $personinshift->id . "<br />";
