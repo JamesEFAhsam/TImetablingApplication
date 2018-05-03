@@ -63,6 +63,7 @@
 		<div class = "rotaSection">
 			<table id="rotaTable">
 			<tr>
+			    <th>SHIFT</th>
 				<th> MON </th>
 				<th> TUES </th>
 				<th> WEDS </th>
@@ -72,6 +73,7 @@
 				<th> SUN </th>
 			</tr>
 			<tr>
+			    <td><h6>Early Shift: 9am-4pm</h6></td>
 				<td id ="moM"></td>
 				<td id ="tuM"></td>
 				<td id ="weM"></td>
@@ -81,6 +83,7 @@
 				<td id ="suM"></td>
 			</tr>
 			<tr>
+			    <td><h6>Late Shift: 4pm-11pm</h6></td>
 				<td id ="moE"></td>
 				<td id ="tuE"></td>
 				<td id ="weE"></td>
